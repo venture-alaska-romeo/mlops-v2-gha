@@ -6,12 +6,12 @@ env:
     config_env: 'none'
 jobs:
   get-config:
-      uses: ./.github/workflows/templates/read-yaml.yml
+      uses: ./.github/workflows/read-yaml.yml
       with:
         file_name: config-infra-prod.yml
   test-terraform-state-deployment:
     needs: get-config
-    uses: ./.github/workflows/templates/tf-gha-install-terraform.yml
+    uses: ./.github/workflows/tf-gha-install-terraform.yml
     with:
       TFAction: 'apply'
       dply_environment: ${{ needs.set-env-branch.outputs.config-file }} 
