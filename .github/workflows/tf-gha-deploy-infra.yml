@@ -6,12 +6,12 @@ env:
     config_env: 'none'
 jobs:
   get-config:
-      uses: Azure/mlops-templates/.github/workflows/read-yaml.yml@main
+      uses: ./.github/workflows/templates/read-yaml.yml@main
       with:
         file_name: config-infra-prod.yml
   test-terraform-state-deployment:
     needs: get-config
-    uses: Azure/mlops-templates/.github/workflows/tf-gha-install-terraform.yml@main
+    uses: ./.github/workflows/templates/tf-gha-install-terraform.yml@main
     with:
       TFAction: 'apply'
       dply_environment: ${{ needs.set-env-branch.outputs.config-file }} 
@@ -29,7 +29,7 @@ jobs:
       terraform_st_container_name: ${{ needs.get-config.outputs.terraform_st_container_name }}
       terraform_st_key: ${{ needs.get-config.outputs.terraform_st_key }}
       terraform_plan_location: ${{ needs.get-config.outputs.location }}
-      terraform_plan_vnet: "TBD" # TBD
+      terraform_plan_vnet: "Alaska-Romeo-Network"
     secrets:
       azure_creds: ${{ secrets.AZURE_CREDENTIALS_PROD }}
       clientId: ${{ secrets.ARM_CLIENT_ID_PROD }}
