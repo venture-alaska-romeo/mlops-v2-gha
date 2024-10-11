@@ -31,11 +31,11 @@ jobs:
       terraform_plan_location: ${{ needs.get-config.outputs.location }}
       terraform_plan_vnet: "TBD" # TBD
     secrets:
-      azure_creds: ${{ secrets.AZURE_CREDENTIALS }}
-      clientId: ${{ secrets.ARM_CLIENT_ID }}
-      clientSecret: ${{ secrets.ARM_CLIENT_SECRET }}
-      subscriptionId: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      tenantId: ${{ secrets.ARM_TENANT_ID }}
+      azure_creds: ${{ secrets.AZURE_CREDENTIALS_PROD }}
+      clientId: ${{ secrets.ARM_CLIENT_ID_PROD }}
+      clientSecret: ${{ secrets.ARM_CLIENT_SECRET_PROD }}
+      subscriptionId: ${{ secrets.ARM_SUBSCRIPTION_ID_PROD }}
+      tenantId: ${{ secrets.ARM_TENANT_ID_PROD }}
   deploy-azureml-resources:
     runs-on: ubuntu-latest
     steps:
